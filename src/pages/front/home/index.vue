@@ -17,7 +17,7 @@
     </el-main>
     <el-footer>
        <el-row :gutter="10">
-            <el-col :span="8"  v-for="item in 3" :key="item">
+            <el-col :span="6"  v-for="item in 4" :key="item">
                  <a class="foot-item">
                     航班
                  </a>
@@ -42,6 +42,9 @@ export default {
     padding:0px;
     .el-col-6{
     margin-top: 10px;
+    }
+    .el-row{
+      margin:0 -5px !important;
     }
   }
   .el-carousel__item h3 {

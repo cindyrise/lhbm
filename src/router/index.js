@@ -1,9 +1,13 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/helloWorld'
-import Home from '@/pages/home/index'
-import BackTpl from '@/tpls/backTpl'
+//前端路由设置
 import FrontTpl from '@/tpls/frontTpl'
+import Home from '@/pages/front/home/index'
+
+//后端路由设置
+import BackTpl from '@/tpls/backTpl'
+import HelloWorld from '@/components/helloWorld'
+import AdSet from '@/pages/back/adSet/index'
 
 Vue.use(Router)
 
@@ -24,7 +28,18 @@ export default new Router({
         path: '/hello',
         name: 'test',
         component: HelloWorld,
-      }]
+      },
+      {
+        path: '/back/adset',
+        name: 'ad',
+        component: AdSet,
+      },
+      {
+        path: '/bb',
+        name: 'AdSet',
+        component: AdSet,
+      },
+    ]
     }
   ]
 })
