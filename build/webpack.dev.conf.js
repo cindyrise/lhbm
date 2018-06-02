@@ -39,15 +39,12 @@ const devWebpackConfig = merge(baseWebpackConfig, {
       : false,
     publicPath: config.dev.assetsPublicPath,
     proxy: {
-      "/api/v1": {
-          target: {
-              "host": "172.16.0.6",
-              "protocol": 'http://',
-              "port": 3003,
-          },
-          pathRewrite: {'^/api' : ''},
-          changeOrigin: true,
-          secure: false
+      '/api/v1': {    //将www.exaple.com印射为/apis
+          target: 'http://127.0.0.1:3003',  // 接口域名
+          changeOrigin: true,  //是否跨域
+          // pathRewrite: {
+          //     '^/api': '/api'   //需要rewrite的,
+          // }
       }
     },
     quiet: true, // necessary for FriendlyErrorsPlugin

@@ -34,6 +34,9 @@
 </template>
 <script>
 export default {
+  mounted(){
+    this.$store.dispatch('getZone', {})
+  },
   methods: {
       handleOpen(key, keyPath) {
         console.log(key, keyPath);
@@ -49,13 +52,11 @@ export default {
 .el-header {
   background-color: #001529;
   color: #333;
-  //text-align: center;
   line-height: 60px;
 }
 .el-footer {
   background-color: #b3c0d1;
   color: #333;
-  //text-align: center;
   line-height: 60px;
 }
 .logo {
@@ -91,7 +92,6 @@ export default {
 .el-main {
   background-color: #eee;
   color: #333;
-  //text-align: center;
   min-height: 800px;
   .back{
     .page-title{

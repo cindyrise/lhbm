@@ -1,7 +1,8 @@
-import api from '@/api/index'
+import apiUrl from '@/api/url'
+import http from '@/utils/http'
 
 
-const user = {
+const app = {
   state: {
     zone:[]
   },
@@ -11,17 +12,11 @@ const user = {
     }
   },
   actions: {
-    getAd({ commit }, params) {
-      return new Promise((resolve, reject) => {
-        api.getAd(params).then(response => {
-          const data = response.data
-          commit('GET_ZONE', data)
-          resolve()
-        }).catch(error => {
-          reject(error)
-        })
-      })
-    }
+    async getZone({ commit }, params) {
+      let ret= await http.get(apiUrl.getZone,params);
+      commit('GET_ZONE', ret.data||[]);
+      return ret;
+     }
   }
 }
 

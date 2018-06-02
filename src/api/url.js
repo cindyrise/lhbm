@@ -1,8 +1,8 @@
-const baseUrl = '/api/v1';
+const baseUrl ='/api/v1';
 export default {
-  getAd:`${baseUrl}/crawler/task//all-configs`,
-  getCrawlerTrend:`${baseUrl}/crawler/job/get-trend-table`,
-  getCrawlerDetail:`${baseUrl}/crawler/job/list-job-details`,
+  getAd:`${baseUrl}/getAd`,
+  getZone:`${baseUrl}/getZone`,
+  createAd:`${baseUrl}/createAd`,
   getProgressList:`${baseUrl}/crawler/job/list-jobs`,
   getCrawlerSummary:`${baseUrl}/crawler/job/summary`,
 
