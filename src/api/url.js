@@ -1,17 +1,23 @@
 const baseUrl ='/api/v1';
 export default {
+  //广告模块
   getAd:`${baseUrl}/getAd`,
-  getZone:`${baseUrl}/getZone`,
   createAd:`${baseUrl}/createAd`,
-  getProgressList:`${baseUrl}/crawler/job/list-jobs`,
-  getCrawlerSummary:`${baseUrl}/crawler/job/summary`,
 
+  //网址模块
+  getSite:`${baseUrl}/getSite`,
+  createSite:`${baseUrl}/createSite`,
+  //icon模块
+  getIconList:`${baseUrl}/getIconList`,
+  getIcons:`${baseUrl}/getIcons`,
+  getSiteOption:`${baseUrl}/getSiteOption`,
+  createIcon:`${baseUrl}/createIcon`,
 
-  setCrawlerCycle:`${baseUrl}/crawler/task/config-cron`,
-  setTaskStatus:`${baseUrl}/crawler/task/change-state`,
-  createTask:`${baseUrl}/crawler/task/create-task`,
-  getTaskList:`${baseUrl}/crawler/task/list`,
-  getTaskPriority:`${baseUrl}/crawler/task/config-level`,
+  //公用模块
+  getCurIp:`http://pv.sohu.com/cityjson?ie=utf-81`,
+  getZone:`${baseUrl}/getZone`,
+  getDict:`${baseUrl}/getDict`,
+
 
   getResourceList:`${baseUrl}/crawler/node/config-list`,
   setResourceConf:`${baseUrl}/crawler/node/config`,

@@ -7,21 +7,22 @@
   <el-container>
     <el-aside width="200px">
       <el-menu
-        default-active="2"
+        default-active="adset"
         class="el-menu-vertical"
         @open="handleOpen"
+        :router="true"
         @close="handleClose">
-        <el-menu-item index="2">
+        <el-menu-item index="adset">
          <i class="el-icon-menu"></i>
          <span slot="title">广告展示</span>
         </el-menu-item>
-        <el-menu-item index="3">
+        <el-menu-item index="iconset">
          <i class="el-icon-document"></i>
          <span slot="title">图标展示</span>
         </el-menu-item>
-        <el-menu-item index="4">
+        <el-menu-item index="siteset">
          <i class="el-icon-setting"></i>
-         <span slot="title">网址暂时</span>
+         <span slot="title">网址设置</span>
         </el-menu-item>
       </el-menu>
     </el-aside>
@@ -35,7 +36,8 @@
 <script>
 export default {
   mounted(){
-    this.$store.dispatch('getZone', {})
+    this.$store.dispatch('getZone', {});
+    this.$store.dispatch('getDict', {});
   },
   methods: {
       handleOpen(key, keyPath) {
@@ -62,6 +64,7 @@ export default {
 .logo {
   width: 160px;
   line-height: 60px;
+  margin-left: 45px;
   img {
     height: 45px;
     margin-top: 5px;

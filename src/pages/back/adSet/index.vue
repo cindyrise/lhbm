@@ -8,7 +8,7 @@
     </div>
     <div class="page-content">
       <el-table :data="adList" border style="width: 100%; margin-top: 20px">
-        <el-table-column prop="id" label="ID" width="180">
+        <el-table-column prop="id" label="ID" width="60">
         </el-table-column>
          <el-table-column prop="name" label="名字">
         </el-table-column>
@@ -94,7 +94,7 @@
 </template>
 
 <script>
-import api from "../../../api/index.js";
+import api from "@/api/index.js";
 export default {
   data() {
     return {

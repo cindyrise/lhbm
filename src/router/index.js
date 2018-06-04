@@ -8,6 +8,8 @@ import Home from '@/pages/front/home/index'
 import BackTpl from '@/tpls/backTpl'
 import HelloWorld from '@/components/helloWorld'
 import AdSet from '@/pages/back/adSet/index'
+import IconSet from '@/pages/back/iconSet/index'
+import SiteSet from '@/pages/back/siteSet/index'
 
 Vue.use(Router)
 
@@ -25,21 +27,24 @@ export default new Router({
     {
       path: '/back',
       component: BackTpl,
-      children: [{
-        path: '/hello',
-        name: 'test',
-        component: HelloWorld,
-      },
+      children: [
       {
         path: '/back/adset',
         name: 'ad',
         component: AdSet,
       },
+      ,
       {
-        path: '/bb',
-        name: 'AdSet',
-        component: AdSet,
+        path: '/back/iconset',
+        name: 'icon',
+        component: IconSet,
       },
+      ,
+      {
+        path: '/back/siteset',
+        name: 'site',
+        component: SiteSet,
+      }
     ]
     }
   ]
