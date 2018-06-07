@@ -42,12 +42,9 @@
                  <el-input v-model="form.url"></el-input>
                 </el-form-item>
                 <el-form-item label="网址类型：">
-                   <el-cascader
-                    expand-trigger="hover"
-                    :options="dictTree"
-                    v-model="form.code"
-                    @change="checkDict">
-                  </el-cascader>
+                  <el-select v-model="form.code" placeholder="请选择网址类型">
+                     <el-option v-for="item in dictType " :key="item.value" :label="item.label" :value="item.value"></el-option>
+                  </el-select>
                 </el-form-item>
                 <el-form-item label="网址备注：">
                   <el-input type="textarea" v-model="form.remark"></el-input>
@@ -64,7 +61,7 @@
 </template>
 
 <script>
-import api from "@/api/index.js";
+import api from "@/api/back.js";
 export default {
   data() {
     return {
@@ -72,7 +69,7 @@ export default {
       form: {
         name: "htt",
         url:'',
-        code:[],
+        code:"",
         remark: ""
       },
       siteList: []
@@ -82,8 +79,8 @@ export default {
     this.getSiteList({});
   },
   computed: {
-    dictTree() {
-      return this.$store.state.app.dict;
+    dictType() {
+      return this.$store.state.app.dictType;
     }
   },
   methods: {
@@ -91,9 +88,10 @@ export default {
       console.log(e);
     },
     getSiteList(params){
-      api.getSite(params).then(ret => {
+      api.getSite(params).
+      then(ret => {
        this.siteList=ret.data;
-    });
+      });
     },
     handle(item) {
       this.visible = true;
@@ -102,9 +100,7 @@ export default {
       console.log(rows);
     },
     submit() {
-      this.form.code=this.form.code[1];
       api.createSite(this.form).then(ret => {
-           //this.visible=false;
            this.getSiteList({});
            this.$message.success("创建成功！");
       });

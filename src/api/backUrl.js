@@ -20,7 +20,6 @@ export default {
   getDictType:`${baseUrl}/getDictType`,
   getLocation:`${baseUrl}/getLocation`,
 
-
   //用户模块
 
 }

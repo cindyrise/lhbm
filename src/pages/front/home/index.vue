@@ -2,8 +2,8 @@
    <div>
      <el-main class="bat-main">
        <el-carousel height="150px">
-            <el-carousel-item v-for="item in 4" :key="item">
-              <h3>{{ item }}</h3>
+            <el-carousel-item v-for="item in adList" :key="item.id">
+             <img :src="item.img_url">
             </el-carousel-item>
         </el-carousel>
       <el-row :gutter="20">
@@ -27,12 +27,36 @@
    </div>
 </template>
 <script>
+import api from "@/api/front.js";
 export default {
   name: "Home",
   data() {
     return {
-      msg: "Welcome to Your HOME !!!"
+     adList:[],
+     navList:[],
+     iconList:[]
     };
+  },
+  mounted() {
+    let city_code=this.$store.state.app.cityInfo.code||'';
+    api.getAdList({ city_code }).then(ret => {
+     this.adList=ret.data;
+    });
+     api.getDictByCode({ "code":"0000" }).then(ret=>{
+          this.navList=ret.data||[];
+          this.getIconList({city_code,dict_code:this.navList[0].value});
+     });
+
+  },
+  methods: {
+   getIconList(params){
+    api.getIconList(params).then(ret => {
+     this.iconList=ret.data;
+    });
+   },
+   getDictByCode(params){
+
+   }
   }
 };
 </script>

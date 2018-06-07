@@ -7,11 +7,6 @@
 <script>
 export default {
   name: "FrontTpl",
-  data() {
-    return {
-      msg: "Welcome to Your FrontTpl !!!"
-    };
-  }
 };
 </script>
 <style lang="scss">

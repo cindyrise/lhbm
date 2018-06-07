@@ -107,7 +107,7 @@
 </template>
 
 <script>
-import api from "@/api/index.js";
+import api from "@/api/back.js";
 export default {
   data() {
     return {

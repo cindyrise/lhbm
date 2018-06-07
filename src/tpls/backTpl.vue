@@ -34,10 +34,12 @@
 </el-container>
 </template>
 <script>
+
 export default {
   mounted(){
     this.$store.dispatch('getZone', {});
     this.$store.dispatch('getDict', {});
+    this.$store.dispatch('getDictType', {dict_code:'0000'});
   },
   methods: {
       handleOpen(key, keyPath) {
