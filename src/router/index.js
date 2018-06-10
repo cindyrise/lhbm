@@ -4,13 +4,13 @@ import Router from 'vue-router'
 import FrontTpl from '@/tpls/frontTpl'
 import Home from '@/pages/front/home/index'
 import Auth from '@/pages/auth/index'
+import Login from '@/pages/login'
 //后端路由设置
 import BackTpl from '@/tpls/backTpl'
 import HelloWorld from '@/components/helloWorld'
 import AdSet from '@/pages/back/adSet/index'
 import IconSet from '@/pages/back/iconSet/index'
 import SiteSet from '@/pages/back/siteSet/index'
-
 
 Vue.use(Router)
 
@@ -23,14 +23,19 @@ export default new Router({
         path: '/home',
         name: 'home',
         component: Home,
-      }]
-    },
-    {
-      path: '/auth',
-      name: 'auth',
-      component: Auth,
-    },
-    {
+      },
+      {
+        path: '/auth',
+        name: 'auth',
+        component: Auth,
+      },
+      ]},
+      {
+       path:'/login',
+       component:Login,
+       name:'login'
+      },
+     {
       path: '/back',
       component: BackTpl,
       children: [

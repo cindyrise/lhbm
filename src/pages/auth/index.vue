@@ -1,4 +1,5 @@
 <template>
+<div class="auth">
  <div class="loader">
   <div class="dot"></div>
   <div class="dot"></div>
@@ -6,9 +7,11 @@
   <div class="dot"></div>
   <div class="dot"></div>
  </div>
+ </div>
 </template>
 <script>
 import api from "@/api/front.js";
+import localDb from '@/utils/localDb'
 export default {
   mounted() {
     let self = this;
@@ -17,7 +20,7 @@ export default {
         let x = pos.coords.longitude; //得到经度
         let y = pos.coords.latitude; //得到纬度
         api.getLocation({ x, y }).then(ret => {
-          self.$store.dispatch("getCityInfo", ret.data);
+          localDb.set("cityInfo",ret.data);
           self.$router.push({ name: "home", params: { id: ret.data } });
         });
       });
@@ -27,8 +30,8 @@ export default {
 </script>
 
 <style lang="scss">
-body {
-  margin: 0;
+.auth{
+  min-height:540px;
 }
 .loader {
   position: absolute;

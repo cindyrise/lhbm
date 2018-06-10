@@ -1,4 +1,4 @@
-import apiUrl from './url'
+import apiUrl from './backUrl'
 import http from '../utils/http'
 export default {
   async getAd(param){
@@ -39,6 +39,10 @@ export default {
   },
   async getLocation(param){
     let ret= await http.post(apiUrl.getLocation, param);
+    return ret;
+  },
+  async login(param){
+    let ret= await http.post(apiUrl.login, param);
     return ret;
   },
 }

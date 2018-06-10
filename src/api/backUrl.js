@@ -19,7 +19,7 @@ export default {
   getDict:`${baseUrl}/getDict`,
   getDictType:`${baseUrl}/getDictType`,
   getLocation:`${baseUrl}/getLocation`,
-
+  login:`${baseUrl}/getLogin`
   //用户模块
 
 }

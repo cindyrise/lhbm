@@ -72,7 +72,7 @@
                  <el-form-item label="图标类型：">
                     <el-radio-group v-model="form.type">
                       <el-radio  label="font"></el-radio>
-                      <el-radio   label="!font"></el-radio>
+                      <el-radio   label="png"></el-radio>
                     </el-radio-group>
                  </el-form-item>
                  <el-form-item v-if="form.type!='font'" label="上传图标：">
@@ -83,7 +83,7 @@
                       :limit="1"
                       :auto-upload="false">
                        <el-button slot="trigger" size="small" type="primary">选取文件</el-button>
-                       <span slot="tip" class="el-upload__tip">&nbsp;&nbsp;只能上传jpg/png/svg且不超过500kb,建议上传svg图标</span>
+                       <span slot="tip" class="el-upload__tip">&nbsp;&nbsp;只能上传jpg/png且不超过500kb,建议上传png图标</span>
                   </el-upload>
                 </el-form-item>
                 <el-form-item v-if="form.type=='font'" label="图标颜色：">
@@ -143,7 +143,7 @@ export default {
   },
   methods: {
     getIconList(params){
-     api.getIconList({}).then(ret => {
+     api.getIconList(params).then(ret => {
         this.iconList=ret.data;
      });
     },
@@ -173,11 +173,10 @@ export default {
       console.log(rows);
     },
     submit() {
-      console.log(this.form.fileList.length, this.form.fileList[0]);
       const formData = new FormData();
       formData.append("iconFile",this.form.fileList.length ? this.form.fileList[0].raw : "empty");
       formData.append("name", this.form.name);
-      formData.append("city_code", this.form.city_code[1]);
+      formData.append("city_code", this.form.city_code[1].toString());
       formData.append("dict_code", this.form.dict_code[1]);
       formData.append("site_id", this.form.site_id);
       formData.append("type", this.form.type);
@@ -185,6 +184,8 @@ export default {
       formData.append("class_name", this.form.class_name);
       formData.append("remark", this.form.remark);
       api.createIcon(formData).then(ret => {
+        this.visible=false;
+        this.getIconList({});
         this.$message.success("提交成功！");
       });
     }
