@@ -7,7 +7,7 @@
             </el-carousel-item>
         </el-carousel>
       <el-row :gutter="20">
-            <el-col :span="6"  v-for="item in iconList" :key="item.id">
+            <el-col :span="6" v-if="iconList.length"  v-for="item in iconList" :key="item.id">
                  <a class="item" v-if="item.type=='font'" :href="item.url">
                    <i :style="{color:`${item.color}`}" :class="`iconfont icon-${item.class_name}`"></i>
                    <div class="icon-title">{{item.name}}</div>
@@ -16,6 +16,9 @@
                    <img :src="`${server_url}/${item.icon_url}`"/>
                    <div class="icon-title">{{item.name}}</div>
                  </a>
+            </el-col>
+            <el-col :span="24" v-if="!iconList.length">
+               <div :style="{textAlign:'center'}">暂无数据</div>
             </el-col>
       </el-row>
     </el-main>
@@ -47,7 +50,7 @@ export default {
   },
   mounted() {
     let city_code =localDb.get("cityInfo").code||'';
-    this.city_code=city_code;
+    this.city_code=city_code||'00070000';
     api.getAdList({ city_code }).then(ret => {
       this.adList = ret.data;
     });

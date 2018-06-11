@@ -15,20 +15,21 @@ import SiteSet from '@/pages/back/siteSet/index'
 Vue.use(Router)
 
 export default new Router({
+  mode: 'history',
   routes: [{
       path: '/',
       component: FrontTpl,
-      children: [
-        {
-          path: '/',
-          name: 'auth',
-          component: Auth,
-        },
-        {
+      children: [{
         path: '/home',
         name: 'home',
         component: Home,
-       }]},
+      },
+      {
+        path: '/auth',
+        name: 'auth',
+        component: Auth,
+      },
+      ]},
       {
        path:'/login',
        component:Login,
