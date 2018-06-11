@@ -7,20 +7,20 @@
   <el-container>
     <el-aside width="200px">
       <el-menu
-        default-active="adset"
+        default-active="/back/adset"
         class="el-menu-vertical"
         @open="handleOpen"
         :router="true"
         @close="handleClose">
-        <el-menu-item index="adset">
+        <el-menu-item index="/back/adset">
          <i class="el-icon-menu"></i>
          <span slot="title">广告展示</span>
         </el-menu-item>
-        <el-menu-item index="iconset">
+        <el-menu-item index="/back/iconset">
          <i class="el-icon-document"></i>
          <span slot="title">图标展示</span>
         </el-menu-item>
-        <el-menu-item index="siteset">
+        <el-menu-item index="/back/siteset">
          <i class="el-icon-setting"></i>
          <span slot="title">网址设置</span>
         </el-menu-item>

@@ -98,7 +98,7 @@ export default {
     };
   },
   mounted() {
-    api.getAd({ city_name: "大同市" }).then(ret => {
+    api.getAd({}).then(ret => {
        this.adList=ret.data;
     });
   },
@@ -136,7 +136,8 @@ export default {
       formData.append("sort", this.form.sort);
       formData.append("remark", this.form.remark);
       api.createAd(formData).then(ret => {
-           this.$message.success("提交成功！");
+           this.$message.success("新建成功！");
+                this.visible = false;
       });
     }
   }
